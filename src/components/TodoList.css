@@ -1,0 +1,36 @@
+.todo-list {
+   margin-bottom: 2em;
+   position: relative;
+   left: -0.5em;
+   width: calc(100% + 1em);
+   height: 100%;
+   overflow-y: auto;
+   overflow-x: hidden;
+   scrollbar-gutter: stable both-edges;
+}
+
+.todo-empty {
+   text-align: center;
+   font-size: 1em;
+   font-weight: 700;
+   margin: 2em 0;
+   color: var(--mid-hover-color);
+   flex-grow: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+}
+
+.todo-empty h3 {
+   margin-top: 1em;
+}
+
+.todo-empty h5 {
+   margin-top: 0.25em;
+}
+
+.todo-empty svg {
+   width: 3em;
+   height: 3em;
+}

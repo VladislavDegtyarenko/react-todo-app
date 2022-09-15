@@ -1,0 +1,67 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+html,
+body,
+#root {
+   width: 100%;
+   height: 100%;
+   min-width: 320px;
+}
+
+body {
+   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+      "Droid Sans", "Helvetica Neue", sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   background-color: var(--solid-color-deep);
+}
+
+:root {
+   --solid-color: #23242b;
+   --solid-color-deep: #18191d;
+   --card-color: #2e3038;
+   --card-color-hover: #363844;
+   --text-color: #d3d4d9;
+   --accent-color: #eb5160;
+   --alt-color: hsl(193, 90%, 35%);
+   --alt-hover-color: #0080a3;
+   --mid-color: #477d85;
+   --mid-hover-color: #599aa6;
+   --transition: all 0.15s linear;
+}
+
+#root {
+   background-color: var(--solid-color);
+   color: var(--text-color);
+   display: flex;
+   flex-direction: column;
+   font-size: 1em;
+}
+
+/* Custom Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+   width: 0.5em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+   background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+   background: var(--mid-color);
+   border-radius: 0.25em;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+   background: #555;
+   background: var(--mid-hover-color);
+}

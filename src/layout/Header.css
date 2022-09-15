@@ -1,0 +1,12 @@
+.header {
+   font-size: 1.5em;
+   line-height: 1;
+   padding: 0.5em 0;
+   text-align: center;
+   background-color: var(--solid-color-deep);
+   box-shadow: 0 0 0.5em #00000033;
+}
+
+.header span {
+   color: var(--alt-color);
+}

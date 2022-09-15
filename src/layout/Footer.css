@@ -1,0 +1,21 @@
+.footer {
+   padding: 1em;
+   font-size: 0.75em;
+   line-height: 1;
+   background-color: var(--solid-color-deep);
+}
+
+.footer__copyright {
+   display: block;
+   font-size: inherit;
+   text-align: center;
+   color: var(--mid-color);
+}
+
+.footer a {
+   color: var(--mid-color);
+}
+
+.footer a:hover {
+   color: var(--mid-hover-color);
+}

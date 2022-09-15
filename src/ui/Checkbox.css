@@ -1,0 +1,59 @@
+.Checkbox {
+   display: flex;
+   position: relative;
+   margin-right: 0.25em;
+   padding: 0.5em;
+   left: -0.5em;
+   overflow: hidden;
+   cursor: pointer;
+   transition: var(--transition);
+   flex-shrink: 0;
+}
+
+.Checkbox[disabled] {
+   user-select: none;
+   pointer-events: none;
+   opacity: 0.5;
+   filter: grayscale(1);
+}
+
+.Checkbox input {
+   position: absolute;
+   left: -100%;
+   width: 0;
+   height: 0;
+   opacity: 0;
+}
+
+.Checkbox.checked > span {
+   background-color: var(--mid-color);
+}
+
+@media screen and (hover: hover) {
+   .Checkbox:hover > span {
+      border-color: var(--alt-color);
+   }
+
+   .Checkbox.checked:hover > span {
+      background-color: var(--alt-color);
+   }
+}
+
+.Checkbox span {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 1.5em;
+   height: 1.5em;
+   border: solid 0.125em var(--mid-color);
+   border-radius: 0.25em;
+   border-radius: 50%;
+   padding: 0.25em;
+   color: var(--card-color);
+   transition: var(--transition);
+}
+
+.Checkbox svg {
+   width: 100%;
+   height: 100%;
+}
