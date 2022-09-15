@@ -7,7 +7,7 @@ Simple **Todo List App** developed using [ReactJS](https://reactjs.org/).
 ## Features
 
 - simple and intuitive interface
-- fast and respinsible
+- fast and responsible
 - nice and clean UI
 - your todos are saved in your browser (via localStorage)
 
