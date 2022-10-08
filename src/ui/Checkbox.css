@@ -1,7 +1,7 @@
 .Checkbox {
    display: flex;
    position: relative;
-   margin-right: 0.25em;
+   margin: 0;
    padding: 0.5em;
    left: -0.5em;
    overflow: hidden;
@@ -25,21 +25,21 @@
    opacity: 0;
 }
 
-.Checkbox.checked > span {
+.Checkbox.checked > .Checkbox__icon {
    background-color: var(--mid-color);
 }
 
 @media screen and (hover: hover) {
-   .Checkbox:hover > span {
+   .Checkbox:hover > .Checkbox__icon {
       border-color: var(--alt-color);
    }
 
-   .Checkbox.checked:hover > span {
+   .Checkbox.checked:hover > .Checkbox__icon {
       background-color: var(--alt-color);
    }
 }
 
-.Checkbox span {
+.Checkbox__icon {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -56,4 +56,8 @@
 .Checkbox svg {
    width: 100%;
    height: 100%;
+}
+
+.Checkbox__text {
+   margin-left: 1em;
 }

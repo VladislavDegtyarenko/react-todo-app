@@ -1,4 +1,5 @@
 import TodoItem from "../components/TodoItem";
+import Checkbox from "../ui/Checkbox";
 
 // Assets
 import PaperIcon from "../assets/PaperIcon";
@@ -46,7 +47,11 @@ function TodoList(props) {
       });
 
    if (todos && todos.length > 0) {
-      return <ul className="todo-list">{todoElements}</ul>;
+      return (
+         <div className="todo-list__wrapper">
+            <ul className="todo-list">{todoElements}</ul>
+         </div>
+      );
    }
 
    return (

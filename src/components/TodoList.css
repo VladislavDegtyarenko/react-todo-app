@@ -9,6 +9,12 @@
    scrollbar-gutter: stable both-edges;
 }
 
+.todo-list__filters {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 0.5em;
+}
+
 .todo-empty {
    text-align: center;
    font-size: 1em;

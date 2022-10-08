@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 // components
 import AddTodo from "../components/AddTodo";
 import TodoList from "../components/TodoList";
+import Checkbox from "../ui/Checkbox";
 
 // styles
 import "./Main.css";
