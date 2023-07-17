@@ -6,6 +6,9 @@ import AddTodo from "../components/AddTodo";
 import TodoList from "../components/TodoList";
 import Checkbox from "../ui/Checkbox";
 
+// Hooks
+import { useLocalStorage } from "usehooks-ts";
+
 // styles
 import "./Main.css";
 
@@ -36,22 +39,9 @@ const initialDnDState: InitialDnDState = {
 const DEFAULT_TODOS: Todo[] = [];
 
 export default function Main() {
-  const [todos, setTodos] = useState<Todo[]>(() => {
-    try {
-      const savedTodos = localStorage.getItem("todos");
-      if (savedTodos) return JSON.parse(savedTodos);
-    } catch (error) {
-      console.error(error);
-    }
-
-    return DEFAULT_TODOS;
-  });
+  const [todos, setTodos] = useLocalStorage("todos", DEFAULT_TODOS);
   const [formData, setFormData] = useState<FormData>("");
   const [dragAndDrop, setDragAndDrop] = useState(initialDnDState);
-
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
-  }, [todos]);
 
   function handleChange(e: FormEvent<HTMLInputElement>) {
     const { value } = e.currentTarget;
@@ -78,7 +68,7 @@ export default function Main() {
     });
 
     setFormData("");
-  }
+  };
 
   const deleteTodo: DeleteTodo = (id) => {
     setTodos((prevTodos) => {
