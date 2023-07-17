@@ -1,10 +1,10 @@
 import React from "react";
-import "./Footer.css";
+import styles from "./Footer.module.scss";
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <small className="footer__copyright">
+    <footer className={styles.footer}>
+      <small className={styles.footerCopyright}>
         © Copyright {new Date().getFullYear()} |&nbsp;
         <a href="https://vd-developer.vercel.app/" target="_blank">
           Vladyslav Dihtiarenko

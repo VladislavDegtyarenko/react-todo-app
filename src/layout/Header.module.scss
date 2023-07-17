@@ -1,0 +1,18 @@
+.header {
+  padding: 0.5em 0;
+  background-color: var(--solid-color-deep);
+  box-shadow: 0 0 0.5em #00000033;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 1.5em;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+  span {
+    color: var(--alt-color);
+  }
+}

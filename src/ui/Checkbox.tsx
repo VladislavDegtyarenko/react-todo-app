@@ -1,17 +1,17 @@
 import CheckmarkIcon from "../assets/CheckmarkIcon";
 import { CheckboxProps } from "../types/types";
-import "./Checkbox.css";
+import styles from "./Checkbox.module.scss";
 
 function Checkbox({ checked, disabled, onChange, children }: CheckboxProps) {
   return (
     <label
-      className={`${checked ? "Checkbox checked" : "Checkbox"} ${
-        disabled ? "disabled" : ""
+      className={`${styles.checkbox} ${checked ? styles.checked : ""} ${
+        disabled ? styles.disabled : ""
       }`}
     >
       <input type="checkbox" checked={checked} onChange={onChange} />
-      <span className="Checkbox__icon">{checked && <CheckmarkIcon />}</span>
-      {children ? <span className="Checkbox__text">{children}</span> : null}
+      <span className={styles.icon}>{checked && <CheckmarkIcon />}</span>
+      {children ? <span className={styles.text}>{children}</span> : null}
     </label>
   );
 }

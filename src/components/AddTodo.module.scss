@@ -1,0 +1,41 @@
+.add-todo {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  width: 100%;
+  margin-top: 1em;
+  & > * {
+    font-weight: 700;
+    border-radius: 0.25em;
+    padding: 0.675em 1em;
+  }
+
+  input {
+    background-color: var(--text-color);
+    color: var(--solid-color);
+    border: none;
+    flex-grow: 1;
+    max-width: 100%;
+    font-size: 1em;
+
+    &:focus {
+      outline: solid 0.25em var(--mid-color);
+      outline-offset: -2px;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background-color: var(--alt-color);
+    color: var(--text-color);
+    transition: background-color 0.1s linear;
+    &:focus {
+      outline: solid 0.25em var(--mid-color);
+      outline-offset: -2px;
+    }
+    &:hover {
+      background-color: var(--alt-hover-color);
+    }
+  }
+}

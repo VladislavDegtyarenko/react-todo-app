@@ -10,7 +10,7 @@ import SaveIcon from "../assets/SaveIcon";
 import CancelIcon from "../assets/CancelIcon";
 
 // styles
-import "./TodoItem.css";
+import styles from "./TodoItem.module.scss";
 import { TodoItemProps } from "../types/types.js";
 
 function TodoItem({
@@ -56,7 +56,6 @@ function TodoItem({
   };
 
   const handleDeleteTodo = () => {
-    //setIsFadedOut(true);
     setTodoFadedIn(id, false);
 
     setTimeout(() => deleteTodo(id), 150);
@@ -69,13 +68,11 @@ function TodoItem({
 
   const enterEditingState = () => setEditingState(true);
 
-  let itemClassName = "todo-item";
-  if (className) itemClassName += ` ${className}`;
-  if (fadedIn) itemClassName += ` todo-item--fade-in`;
-
   return (
     <li
-      className={itemClassName}
+      className={`${styles.todoItem} ${className ? className : ""} ${
+        fadedIn ? styles.fadeIn : ""
+      }`}
       draggable={true}
       data-position={dataPosition}
       onDragStart={onDragStart}
@@ -89,7 +86,7 @@ function TodoItem({
           <Checkbox checked={isDone} onChange={() => doneTodo(id)} disabled={true} />
           <input
             type="text"
-            className="todo-item__name"
+            className={styles.todoItemName}
             value={inputName}
             onChange={handleInputName}
             onKeyDown={handleKeyPress}
@@ -106,7 +103,7 @@ function TodoItem({
       ) : (
         <>
           <Checkbox checked={isDone} onChange={() => doneTodo(id)} />
-          <div className={isDone ? "todo-item__name done" : "todo-item__name"}>
+          <div className={`${styles.todoItemName} ${isDone ? styles.done : ""}`}>
             {name}
           </div>
 

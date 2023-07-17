@@ -4,17 +4,16 @@
   width: calc(100% + 1em);
   height: 100%;
   scrollbar-gutter: stable both-edges;
-}
+  &__filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5em;
+  }
 
-.todo-list__filters {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 0.5em;
-}
-
-.todo-list__wrapper {
-  overflow-y: auto;
-  overflow-x: hidden;
+  &__wrapper {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }
 
 .todo-empty {
@@ -28,17 +27,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
+  h3 {
+    margin-top: 1em;
+  }
 
-.todo-empty h3 {
-  margin-top: 1em;
-}
+  h5 {
+    margin-top: 0.25em;
+  }
 
-.todo-empty h5 {
-  margin-top: 0.25em;
-}
-
-.todo-empty svg {
-  width: 3em;
-  height: 3em;
+  svg {
+    width: 3em;
+    height: 3em;
+  }
 }

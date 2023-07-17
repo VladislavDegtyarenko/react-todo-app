@@ -8,7 +8,7 @@ import TodoItem from "../components/TodoItem";
 import PaperIcon from "../assets/PaperIcon";
 
 // Styles
-import "./TodoList.css";
+import styles from "./TodoList.module.scss";
 
 // TS
 import { TodoListProps } from "../types/types";
@@ -16,7 +16,7 @@ import { TodoListProps } from "../types/types";
 function TodoList({ todos, dragAndDrop, ...todoItemProps }: TodoListProps) {
   if (!todos || todos.length === 0) {
     return (
-      <div className="todo-empty">
+      <div className={styles.todoEmpty}>
         <PaperIcon />
         <h3>Your todo list is empty.</h3>
         <h5>Start by adding a new one!</h5>
@@ -25,8 +25,8 @@ function TodoList({ todos, dragAndDrop, ...todoItemProps }: TodoListProps) {
   }
 
   return (
-    <div className="todo-list__wrapper">
-      <ul className="todo-list">
+    <div className={styles.todoListWrapper}>
+      <ul className={styles.todoList}>
         {todos.map((todo, index) => {
           return (
             <TodoItem

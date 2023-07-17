@@ -1,12 +1,11 @@
-import React from "react";
 import { HeaderProps } from "../types/types";
 import Checkbox from "../ui/Checkbox";
-import "./Header.css";
+import styles from "./Header.module.scss";
 
 export default function Header({ darkTheme, toggleDarkTheme }: HeaderProps) {
   return (
-    <header className="header">
-      <h1 className="header__title">
+    <header className={styles.header}>
+      <h1 className={styles.title}>
         <span>React</span> Todo App
       </h1>
       <Checkbox onChange={toggleDarkTheme} checked={darkTheme}>

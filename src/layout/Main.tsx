@@ -9,7 +9,7 @@ import TodoList from "../components/TodoList";
 import { useLocalStorage } from "usehooks-ts";
 
 // styles
-import "./Main.css";
+import styles from "./Main.module.scss";
 
 //TS
 import {
@@ -167,7 +167,7 @@ const Main = () => {
 
   return (
     /* prettier-ignore */
-    <div className="main-todo">
+    <div className={styles.main}>
       <TodoList
         todos={todos}
         renameTodo={renameTodo}

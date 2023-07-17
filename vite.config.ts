@@ -3,7 +3,12 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-   plugins: [react()],
-   base: "/react-todo-app/",
-   server: { https: true },
+  plugins: [react()],
+  base: "/react-todo-app/",
+  server: { https: true },
+  css: {
+    modules: {
+      localsConvention: "camelCase",
+    },
+  },
 });
