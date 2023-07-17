@@ -16,7 +16,7 @@ export interface InitialDnDState {
   updatedOrder: Todo[];
 }
 
-export type FormData = string;
+export type InputValue = string;
 export type AddTodoFunc = (e: FormEvent<HTMLFormElement>) => void;
 export type RenameTodo = (id: Todo["id"], newName: Todo["name"]) => void;
 export type DeleteTodo = (id: string) => void;
@@ -41,11 +41,6 @@ export interface TodoListProps {
 }
 
 export interface TodoItemProps extends Todo {
-  /*   id: string;
-  name: string;
-  isDone: boolean;
-  fadedIn?: boolean; 
-  editingState?: boolean;*/
   dataPosition: number;
   className?: string;
   renameTodo: RenameTodo;
@@ -60,8 +55,8 @@ export interface TodoItemProps extends Todo {
 
 export interface AddTodoProps {
   addTodo: AddTodoFunc;
-  handleChange: (e: FormEvent<HTMLInputElement>) => void;
-  formData: FormData;
+  onChange: (e: FormEvent<HTMLInputElement>) => void;
+  value: InputValue;
 }
 
 export interface HeaderProps {

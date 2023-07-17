@@ -1,9 +1,4 @@
-import {
-  useState,
-  useRef,
-  ChangeEvent,
-  KeyboardEvent,
-} from "react";
+import { useEffect, memo, useState, useRef, ChangeEvent, KeyboardEvent } from "react";
 
 // ui
 import Checkbox from "../ui/Checkbox.jsx";
@@ -16,10 +11,9 @@ import CancelIcon from "../assets/CancelIcon";
 
 // styles
 import "./TodoItem.css";
-import { useEffect } from "react";
 import { TodoItemProps } from "../types/types.js";
 
-export default function TodoItem({
+function TodoItem({
   id,
   name,
   isDone,
@@ -37,7 +31,6 @@ export default function TodoItem({
 }: TodoItemProps) {
   const [editingState, setEditingState] = useState(false);
   const [inputName, setInputName] = useState(name);
-  const [isFadedOut, setIsFadedOut] = useState(false);
 
   const ref = useRef<HTMLLIElement | null>(null);
 
@@ -128,3 +121,5 @@ export default function TodoItem({
     </li>
   );
 }
+
+export default memo(TodoItem);

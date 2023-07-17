@@ -1,16 +1,11 @@
 import { AddTodoProps } from "../types/types";
 import "./AddTodo.css";
 
-function AddTodo({ addTodo, handleChange, formData }: AddTodoProps) {
+function AddTodo({ addTodo, ...inputProps }: AddTodoProps) {
   return (
     <form onSubmit={addTodo} className="add-todo">
-      <input
-        onChange={handleChange}
-        value={formData}
-        type="text"
-        placeholder="Type your todo here"
-      />
-      <button>Add</button>
+      <input type="text" placeholder="Type your todo here" {...inputProps} />
+      <button type="submit">Add</button>
     </form>
   );
 }

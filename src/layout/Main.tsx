@@ -1,10 +1,9 @@
-import { useState, useEffect, FormEvent, MouseEvent, DragEvent } from "react";
+import { useState, useCallback, FormEvent, memo } from "react";
 import { nanoid } from "nanoid";
 
 // components
 import AddTodo from "../components/AddTodo";
 import TodoList from "../components/TodoList";
-import Checkbox from "../ui/Checkbox";
 
 // Hooks
 import { useLocalStorage } from "usehooks-ts";
@@ -17,7 +16,7 @@ import {
   AddTodoFunc,
   DeleteTodo,
   DoneTodo,
-  FormData,
+  InputValue,
   InitialDnDState,
   OnDragLeave,
   OnDragOver,
@@ -38,25 +37,24 @@ const initialDnDState: InitialDnDState = {
 
 const DEFAULT_TODOS: Todo[] = [];
 
-export default function Main() {
+const Main = () => {
   const [todos, setTodos] = useLocalStorage("todos", DEFAULT_TODOS);
-  const [formData, setFormData] = useState<FormData>("");
+  const [inputValue, setInputValue] = useState<InputValue>("");
   const [dragAndDrop, setDragAndDrop] = useState(initialDnDState);
 
-  function handleChange(e: FormEvent<HTMLInputElement>) {
-    const { value } = e.currentTarget;
-    setFormData(value);
-  }
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    setInputValue(e.currentTarget.value);
+  };
 
-  const addTodo: AddTodoFunc = (e) => {
-    e.preventDefault();
+  const addTodo: AddTodoFunc = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    const todoName = formData.trim();
+      const todoName = inputValue.trim();
 
-    if (!todoName) return;
+      if (!todoName) return;
 
-    setTodos((prevTodos) => {
-      return [
+      setTodos((prevTodos) => [
         ...prevTodos,
         {
           id: nanoid(),
@@ -64,86 +62,92 @@ export default function Main() {
           editingState: false,
           isDone: false,
         },
-      ];
-    });
+      ]);
 
-    setFormData("");
-  };
+      setInputValue("");
+    },
+    [inputValue]
+  );
 
-  const deleteTodo: DeleteTodo = (id) => {
-    setTodos((prevTodos) => {
-      return prevTodos.filter((todo) => todo.id !== id);
-    });
-  };
+  const deleteTodo: DeleteTodo = useCallback((id) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  }, []);
 
-  const renameTodo: RenameTodo = (id, newName) => {
+  const renameTodo: RenameTodo = useCallback((id, newName) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) => {
         return todo.id === id ? { ...todo, name: newName } : todo;
       })
     );
-  };
+  }, []);
 
-  const doneTodo: DoneTodo = (id) => {
+  const doneTodo: DoneTodo = useCallback((id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, isDone: !todo?.isDone } : todo
       )
     );
-  };
+  }, []);
 
-  const setTodoFadedIn: SetTodoFadedIn = (id, value) => {
+  const setTodoFadedIn: SetTodoFadedIn = useCallback((id, value) => {
     setTodos((prevTodos) =>
-      prevTodos.map((todo) => (todo.id === id ? { ...todo, fadedIn: value } : todo))
+      prevTodos.map((todo) => {
+        return todo.id === id ? { ...todo, fadedIn: value } : todo;
+      })
     );
-  };
+  }, []);
 
-  const onDragStart: OnDragStart = (e) => {
-    console.log("e: ", e);
-    const initialPosition = Number(e.currentTarget.dataset.position);
+  const onDragStart: OnDragStart = useCallback(
+    (e) => {
+      const initialPosition = Number(e.currentTarget.dataset.position);
 
-    setDragAndDrop((prevDragAndDrop) => ({
-      ...prevDragAndDrop,
-      draggedFrom: initialPosition,
-      isDragging: true,
-      originalOrder: todos,
-    }));
+      setDragAndDrop((prevDragAndDrop) => ({
+        ...prevDragAndDrop,
+        draggedFrom: initialPosition,
+        isDragging: true,
+        originalOrder: todos,
+      }));
 
-    // for Firefox
-    e.dataTransfer.setData("text/html", "");
-  };
+      // for Firefox
+      e.dataTransfer.setData("text/html", "");
+    },
+    [todos]
+  );
 
-  const onDragOver: OnDragOver = (e) => {
-    e.preventDefault();
+  const onDragOver: OnDragOver = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    let newList = dragAndDrop.originalOrder;
+      let newList = dragAndDrop.originalOrder;
 
-    // index of the item being dragged
-    const draggedFrom = dragAndDrop.draggedFrom;
+      // index of the item being dragged
+      const draggedFrom = dragAndDrop.draggedFrom;
 
-    // index of the droppable area being hovered
-    const draggedTo = Number(e.currentTarget.dataset.position);
+      // index of the droppable area being hovered
+      const draggedTo = Number(e.currentTarget.dataset.position);
 
-    const itemDragged = newList[draggedFrom as number];
-    const remainingItems = newList.filter((item, index) => index !== draggedFrom);
+      const itemDragged = newList[draggedFrom as number];
+      const remainingItems = newList.filter((item, index) => index !== draggedFrom);
 
-    // prettier-ignore
-    newList = [
+      // prettier-ignore
+      newList = [
         ...remainingItems.slice(0, draggedTo),
         itemDragged,
         ...remainingItems.slice(draggedTo)
       ];
 
-    if (draggedTo !== dragAndDrop.draggedTo) {
-      setDragAndDrop((prevDragAndDrop) => ({
-        ...prevDragAndDrop,
-        updatedOrder: newList,
-        draggedTo: draggedTo,
-      }));
-    }
-  };
+      if (draggedTo !== dragAndDrop.draggedTo) {
+        setDragAndDrop((prevDragAndDrop) => ({
+          ...prevDragAndDrop,
+          updatedOrder: newList,
+          draggedTo: draggedTo,
+        }));
+      }
+    },
+    [dragAndDrop]
+  );
 
-  const onDrop: OnDrop = () => {
+  const onDrop: OnDrop = useCallback(() => {
     setTodos(dragAndDrop.updatedOrder);
 
     setDragAndDrop((prevDragAndDrop) => ({
@@ -152,14 +156,14 @@ export default function Main() {
       draggedTo: null,
       isDragging: false,
     }));
-  };
+  }, [dragAndDrop]);
 
-  const onDragLeave: OnDragLeave = () => {
+  const onDragLeave: OnDragLeave = useCallback(() => {
     setDragAndDrop((prevDragAndDrop) => ({
       ...prevDragAndDrop,
       draggedTo: null,
     }));
-  };
+  }, []);
 
   return (
     /* prettier-ignore */
@@ -179,9 +183,11 @@ export default function Main() {
 
       <AddTodo
         addTodo={addTodo}
-        handleChange={handleChange}
-        formData={formData}
+        onChange={handleChange}
+        value={inputValue}
       />
     </div>
   );
-}
+};
+
+export default memo(Main);

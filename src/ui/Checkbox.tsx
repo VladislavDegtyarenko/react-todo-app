@@ -5,11 +5,13 @@ import "./Checkbox.css";
 function Checkbox({ checked, disabled, onChange, children }: CheckboxProps) {
   return (
     <label
-      className={`${checked ? "Checkbox checked" : "Checkbox"} ${disabled ? "disabled" : ""}`}
+      className={`${checked ? "Checkbox checked" : "Checkbox"} ${
+        disabled ? "disabled" : ""
+      }`}
     >
-      <input type="checkbox" checked={checked || false} onChange={onChange} />
+      <input type="checkbox" checked={checked} onChange={onChange} />
       <span className="Checkbox__icon">{checked && <CheckmarkIcon />}</span>
-      {children && <span className="Checkbox__text">{children}</span>}
+      {children ? <span className="Checkbox__text">{children}</span> : null}
     </label>
   );
 }
