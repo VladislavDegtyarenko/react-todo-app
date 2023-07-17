@@ -1,43 +1,44 @@
 .add-todo {
-   display: flex;
-   justify-content: center;
-   gap: 1em;
-   width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  width: 100%;
+  margin-top: 1em;
 }
 
 .add-todo * {
-   font-weight: 700;
-   border-radius: 0.25em;
-   padding: 0.675em 1em;
+  font-weight: 700;
+  border-radius: 0.25em;
+  padding: 0.675em 1em;
 }
 
 .add-todo input {
-   background-color: var(--text-color);
-   color: var(--solid-color);
-   border: none;
-   flex-grow: 1;
-   max-width: 100%;
-   font-size: 1em;
+  background-color: var(--text-color);
+  color: var(--solid-color);
+  border: none;
+  flex-grow: 1;
+  max-width: 100%;
+  font-size: 1em;
 }
 
 .add-todo input:focus {
-   outline: solid 0.25em var(--mid-color);
-   outline-offset: -2px;
+  outline: solid 0.25em var(--mid-color);
+  outline-offset: -2px;
 }
 
 .add-todo button:focus {
-   outline: solid 0.25em var(--mid-color);
-   outline-offset: -2px;
+  outline: solid 0.25em var(--mid-color);
+  outline-offset: -2px;
 }
 
 .add-todo button {
-   cursor: pointer;
-   border: none;
-   background-color: var(--alt-color);
-   color: var(--text-color);
-   transition: background-color 0.1s linear;
+  cursor: pointer;
+  border: none;
+  background-color: var(--alt-color);
+  color: var(--text-color);
+  transition: background-color 0.1s linear;
 }
 
 .add-todo button:hover {
-   background-color: var(--alt-hover-color);
+  background-color: var(--alt-hover-color);
 }

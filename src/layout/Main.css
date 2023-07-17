@@ -1,13 +1,13 @@
 .main-todo {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   flex-grow: 1;
-   padding: 0.5em;
-   width: 30em;
-   max-width: 100%;
-   font-size: 1em;
-   margin: 0 auto;
-   overflow: hidden;
-   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 0.5em;
+  width: 30em;
+  max-width: 100%;
+  font-size: 1em;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
 }
