@@ -1,81 +1,78 @@
 * {
-   box-sizing: border-box;
-   margin: 0;
-   padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body,
 #root {
-   width: 100%;
-   height: 100%;
-   min-width: 320px;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
 }
 
 body {
-   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-      "Droid Sans", "Helvetica Neue", sans-serif;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
-   background-color: var(--solid-color-deep);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--solid-color-deep);
 }
 
 .dark-theme {
-   --solid-color: #23242b;
-   --solid-color-deep: #18191d;
-   --card-color: #2e3038;
-   --card-color-hover: #363844;
-   --text-color: #d3d4d9;
-   --accent-color: #eb5160;
-   --alt-color: hsl(193, 90%, 35%);
-   --alt-hover-color: #0080a3;
-   --mid-color: #477d85;
-   --mid-hover-color: #599aa6;
-   --transition: all 0.15s linear;
+  --solid-color: #23242b;
+  --solid-color-deep: #18191d;
+  --card-color: #2e3038;
+  --card-color-hover: #363844;
+  --text-color: #d3d4d9;
+  --accent-color: #eb5160;
+  --alt-color: hsl(193, 90%, 35%);
+  --alt-hover-color: hsl(193, 82%, 47%);
+  --transition: all 0.15s linear;
 }
 
 .light-theme {
-   --solid-color: hsl(233, 10%, 82%);
-   --solid-color-deep: hsl(228, 9%, 92%);
-   --card-color: hsl(228, 10%, 90%);
-   --card-color-hover: hsl(231, 11%, 95%);
-   --text-color: hsl(230, 7%, 16%);
-   --accent-color: #eb5160;
-   --alt-color: hsl(193, 90%, 35%);
-   --alt-hover-color: #0080a3;
-   --mid-color: #477d85;
-   --mid-hover-color: #599aa6;
-   --transition: all 0.15s linear;
+  --solid-color: hsl(233, 10%, 82%);
+  --solid-color-deep: hsl(228, 9%, 92%);
+  --card-color: hsl(228, 10%, 90%);
+  --card-color-hover: hsl(231, 11%, 95%);
+  --text-color: hsl(230, 7%, 16%);
+  --accent-color: #eb5160;
+  --alt-color: hsl(193, 90%, 35%);
+  --alt-hover-color: hsl(193, 82%, 47%);
+  --transition: all 0.15s linear;
 }
 
 #root {
-   background-color: var(--solid-color);
-   color: var(--text-color);
-   display: flex;
-   flex-direction: column;
-   font-size: 1em;
+  background-color: var(--solid-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  font-size: 1em;
+  transition: var(--transition);
 }
 
 /* Custom Scrollbar */
 
 /* width */
 ::-webkit-scrollbar {
-   width: 0.5em;
+  width: 0.5em;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-   background: transparent;
+  background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-   background: var(--mid-color);
-   border-radius: 0.25em;
+  background: var(--alt-color);
+  border-radius: 0.25em;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-   background: #555;
-   background: var(--mid-hover-color);
+  background: #555;
+  background: var(--alt-hover-color);
 }

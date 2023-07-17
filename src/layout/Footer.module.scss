@@ -3,16 +3,18 @@
   font-size: 0.75em;
   line-height: 1;
   background-color: var(--solid-color-deep);
+  transition: var(--transition);
+
   &__copyright {
     display: block;
     font-size: inherit;
     text-align: center;
-    color: var(--mid-color);
+    color: var(--alt-color);
   }
   a {
-    color: var(--mid-color);
+    color: var(--alt-color);
     &:hover {
-      color: var(--mid-hover-color);
+      color: var(--alt-hover-color);
     }
   }
 }

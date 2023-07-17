@@ -96,7 +96,7 @@ function TodoItem({
           <button onClick={saveChanges}>
             <SaveIcon />
           </button>
-          <button onClick={cancelChanges}>
+          <button onClick={cancelChanges} className={styles.secondaryBtn}>
             <CancelIcon />
           </button>
         </>
@@ -110,7 +110,7 @@ function TodoItem({
           <button onClick={enterEditingState}>
             <EditIcon />
           </button>
-          <button onClick={handleDeleteTodo}>
+          <button onClick={handleDeleteTodo} className={styles.secondaryBtn}>
             <DeleteIcon />
           </button>
         </>

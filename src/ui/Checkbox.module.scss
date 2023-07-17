@@ -25,7 +25,7 @@
   }
 
   &.checked > .icon {
-    background-color: var(--mid-color);
+    background-color: var(--alt-color);
   }
 
   @media screen and (hover: hover) {
@@ -44,7 +44,7 @@
     align-items: center;
     width: 1.5em;
     height: 1.5em;
-    border: solid 0.125em var(--mid-color);
+    border: solid 0.125em var(--alt-color);
     border-radius: 0.25em;
     border-radius: 50%;
     padding: 0.25em;

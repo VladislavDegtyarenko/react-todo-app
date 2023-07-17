@@ -8,7 +8,7 @@ export default function Header({ darkTheme, toggleDarkTheme }: HeaderProps) {
     <header className={styles.header}>
       <div className={styles.container}>
         <h1 className={styles.title}>
-          <span>React</span> Todo App
+          <span>Todo</span> App
         </h1>
 
         <DarkModeToggle isDarkMode={darkTheme} toggleDarkMode={toggleDarkTheme} />

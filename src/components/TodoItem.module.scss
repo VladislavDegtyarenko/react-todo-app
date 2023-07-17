@@ -1,7 +1,7 @@
 .todo-item {
   display: flex;
   align-items: center;
-  padding: 0.75em;
+  padding: 0.75em 1.5em;
   background-color: var(--card-color);
   transition: var(--transition);
   transform: scale(0.9);
@@ -40,7 +40,7 @@
   }
 
   &:not(:last-child) {
-    border-bottom: solid 1px var(--mid-color);
+    border-bottom: solid 1px var(--alt-color);
   }
 
   &.dropArea {
@@ -75,7 +75,7 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    color: var(--mid-color);
+    color: var(--alt-color);
     background-color: transparent;
     border: solid 0.125em currentColor;
     border-radius: 0.25em;
@@ -95,6 +95,13 @@
       margin-right: 0.5em;
       margin-left: auto;
     }
+    @media screen and (hover: hover) {
+      &:hover {
+        color: var(--alt-hover-color);
+      }
+    }
+  }
+  .secondaryBtn {
     @media screen and (hover: hover) {
       &:hover {
         color: var(--accent-color);
