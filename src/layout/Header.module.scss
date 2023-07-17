@@ -2,16 +2,21 @@
   padding: 0.5em 0;
   background-color: var(--solid-color-deep);
   box-shadow: 0 0 0.5em #00000033;
+}
+
+.container {
+  width: 30em;
+  max-width: 100%;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0.25em 0.5em;
 }
 
 .title {
   font-size: 1.5em;
   line-height: 1;
   text-align: center;
-  width: 100%;
   span {
     color: var(--alt-color);
   }

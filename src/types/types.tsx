@@ -70,3 +70,8 @@ export interface CheckboxProps {
   children?: string;
   onChange: () => void;
 }
+
+export interface DarkModeToggleProps {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+}
