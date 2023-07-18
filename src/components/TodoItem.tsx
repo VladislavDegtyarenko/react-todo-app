@@ -1,4 +1,6 @@
 import { useEffect, memo, useState, useRef, ChangeEvent, KeyboardEvent } from "react";
+import { useDispatch } from "react-redux";
+import { todoDeleted, todoDone, todoRenamed } from "../features/todosSlice.js";
 
 // ui
 import Checkbox from "../ui/Checkbox.jsx";
@@ -17,36 +19,26 @@ function TodoItem({
   id,
   name,
   isDone,
-  fadedIn,
-  renameTodo,
-  deleteTodo,
-  doneTodo,
-  setTodoFadedIn,
-  className,
   dataPosition,
+  isDropArea,
   onDragStart,
   onDragOver,
   onDrop,
   onDragLeave,
 }: TodoItemProps) {
+  const dispatch = useDispatch();
+
   const [editingState, setEditingState] = useState(false);
   const [inputName, setInputName] = useState(name);
 
   const ref = useRef<HTMLLIElement | null>(null);
-
-  useEffect(() => {
-    if (!fadedIn && ref.current) {
-      setTodoFadedIn(id, true);
-      ref.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, []);
 
   const handleInputName = (e: ChangeEvent<HTMLInputElement>) => {
     setInputName(e.target.value);
   };
 
   const saveChanges = () => {
-    renameTodo(id, inputName.trim());
+    dispatch(todoRenamed({ id, name: inputName.trim() }));
     setEditingState(false);
   };
 
@@ -55,10 +47,12 @@ function TodoItem({
     setEditingState(false);
   };
 
-  const handleDeleteTodo = () => {
-    setTodoFadedIn(id, false);
+  const deleteTodo = () => {
+    dispatch(todoDeleted(id));
+  };
 
-    setTimeout(() => deleteTodo(id), 150);
+  const doneTodo = () => {
+    dispatch(todoDone(id));
   };
 
   const handleKeyPress = (e: KeyboardEvent) => {
@@ -70,8 +64,8 @@ function TodoItem({
 
   return (
     <li
-      className={`${styles.todoItem} ${className ? className : ""} ${
-        fadedIn ? styles.fadeIn : ""
+      className={`${styles.todoItem} ${isDropArea ? styles.dropArea : ""} ${
+        styles.fadeIn
       }`}
       draggable={true}
       data-position={dataPosition}
@@ -83,7 +77,7 @@ function TodoItem({
     >
       {editingState ? (
         <>
-          <Checkbox checked={isDone} onChange={() => doneTodo(id)} disabled={true} />
+          <Checkbox checked={isDone} onChange={doneTodo} disabled={true} />
           <input
             type="text"
             className={styles.todoItemName}
@@ -102,7 +96,7 @@ function TodoItem({
         </>
       ) : (
         <>
-          <Checkbox checked={isDone} onChange={() => doneTodo(id)} />
+          <Checkbox checked={isDone} onChange={doneTodo} />
           <div className={`${styles.todoItemName} ${isDone ? styles.done : ""}`}>
             {name}
           </div>
@@ -110,7 +104,7 @@ function TodoItem({
           <button onClick={enterEditingState}>
             <EditIcon />
           </button>
-          <button onClick={handleDeleteTodo} className={styles.secondaryBtn}>
+          <button onClick={deleteTodo} className={styles.secondaryBtn}>
             <DeleteIcon />
           </button>
         </>
