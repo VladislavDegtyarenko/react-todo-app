@@ -1,6 +1,7 @@
 import { useEffect, memo, useState, useRef, ChangeEvent, KeyboardEvent } from "react";
 import { useDispatch } from "react-redux";
 import { todoDeleted, todoDone, todoRenamed } from "../features/todosSlice.js";
+import { motion, AnimatePresence } from "framer-motion";
 
 // ui
 import Checkbox from "../ui/Checkbox.jsx";
@@ -63,7 +64,9 @@ function TodoItem({
   const enterEditingState = () => setEditingState(true);
 
   return (
-    <li
+    // <AnimatePresence>
+    <motion.li
+      key={id}
       className={`${styles.todoItem} ${isDropArea ? styles.dropArea : ""} ${
         styles.fadeIn
       }`}
@@ -74,6 +77,11 @@ function TodoItem({
       onDrop={onDrop}
       onDragLeave={onDragLeave}
       ref={ref}
+      initial={{ opacity: 0.5, scale: 0.75 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.75 }}
+      transition={{ duration: 0.1 }}
+      whileTap={{ scale: 0.98 }}
     >
       {editingState ? (
         <>
@@ -109,7 +117,8 @@ function TodoItem({
           </button>
         </>
       )}
-    </li>
+    </motion.li>
+    // </AnimatePresence>
   );
 }
 

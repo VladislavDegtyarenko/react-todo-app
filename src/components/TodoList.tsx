@@ -2,6 +2,7 @@
 import { useState, useCallback, memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { todoOrderUpdated } from "../features/todosSlice";
+import { AnimatePresence } from "framer-motion";
 
 // UI
 import TodoItem from "../components/TodoItem";
@@ -118,22 +119,24 @@ function TodoList() {
   return (
     <div className={styles.todoListWrapper}>
       <ul className={styles.todoList}>
-        {todos.map((todo, index) => {
-          return (
-            <TodoItem
-              key={todo.id}
-              id={todo.id}
-              name={todo.name}
-              isDone={todo.isDone}
-              dataPosition={index}
-              isDropArea={dragAndDrop && dragAndDrop.draggedTo === Number(index)}
-              onDragStart={onDragStart}
-              onDragOver={onDragOver}
-              onDrop={onDrop}
-              onDragLeave={onDragLeave}
-            />
-          );
-        })}
+        <AnimatePresence>
+          {todos.map((todo, index) => {
+            return (
+              <TodoItem
+                key={todo.id}
+                id={todo.id}
+                name={todo.name}
+                isDone={todo.isDone}
+                dataPosition={index}
+                isDropArea={dragAndDrop && dragAndDrop.draggedTo === Number(index)}
+                onDragStart={onDragStart}
+                onDragOver={onDragOver}
+                onDrop={onDrop}
+                onDragLeave={onDragLeave}
+              />
+            );
+          })}
+        </AnimatePresence>
       </ul>
     </div>
   );
