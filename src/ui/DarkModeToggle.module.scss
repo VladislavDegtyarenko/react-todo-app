@@ -11,7 +11,7 @@
   --size: 1.25em;
   overflow: hidden;
   cursor: pointer;
-  transition: box-shadow var(--duration);
+  transition: var(--transition);
   box-sizing: content-box;
   input {
     opacity: 0;
@@ -37,7 +37,7 @@
     position: relative;
     border-radius: 50%;
     display: inline-block;
-    transition: all var(--duration-long);
+    transition: var(--transition);
     z-index: 1;
   }
 
@@ -62,7 +62,7 @@
     position: absolute;
     top: 0.375em;
     color: var(--alt-color);
-    transition: all var(--duration-long);
+    transition: var(--transition);
   }
 
   .sun {
