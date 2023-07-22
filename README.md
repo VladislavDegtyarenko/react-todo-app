@@ -2,7 +2,7 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" width="200px"/>
 
-Simple **Todo List App** developed using [ReactJS](https://reactjs.org/).
+Simple **Todo List App** developed using [ReactJS](https://reactjs.org/), [Redux Toolkit](https://redux-toolkit.js.org/) and [Typescript](https://www.typescriptlang.org/).
 
 ## Features
 
